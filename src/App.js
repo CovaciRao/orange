@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Cat from './Cat';
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Hakuna matata
         </a>
       </header>
+      <Cat />
     </div>
   );
 }
