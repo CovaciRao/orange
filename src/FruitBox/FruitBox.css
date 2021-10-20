@@ -1,5 +1,9 @@
 .FruitBox {
     border: 6px solid firebrick;
-    height: 600px;
     display: flex;
+    flex-wrap: wrap;
+}
+
+.FruitBox img {
+    align-self: center;
 }
