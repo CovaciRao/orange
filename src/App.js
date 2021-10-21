@@ -58,10 +58,10 @@ function App() {
           buttonType="submit"
           buttonLabel="Update"
         >
-          <FormControl label="Username" for="text" name="username" id="username" value={TheProfile.username}/>
-          <FormControl label="Email" for="email" name="email" id="email" value={TheProfile.email}/>
-          <FormControl label="Motto" for="textarea" name="motto" id="motto" value={TheProfile.motto}/>
-          <FormControl label="User personalized" for="radio" name="userPersonalized" id="userPersonalized" isChecked={true}/>
+          <FormControl label="Username" type="text" name="username" id="username" value={TheProfile.username}/>
+          <FormControl label="Email" type="email" name="email" id="email" value={TheProfile.email}/>
+          <FormControl label="Motto" type="textarea" name="motto" id="motto" value={TheProfile.motto}/>
+          <FormControl label="User personalized" type="radio" name="userPersonalized" id="userPersonalized" isChecked={true}/>
         </UserForm>
       </div>
 
