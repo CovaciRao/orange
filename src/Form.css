@@ -1,0 +1,23 @@
+button {
+    border: 0;
+    background: firebrick;
+    color:white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button span {
+    margin: 0 4px;
+    vertical-align: middle;
+}
+
+.secoundary-button {
+    background: blue;
+    color: white;
+}
+
+.ternary-button {
+    background-color: chocolate;
+}
