@@ -7,7 +7,7 @@ function SubmitFormButton(props) {
     className={props.theme ? props.theme : ''} 
     type={props.type ? props.type : ''}
    >
-     {props.label}
+     <label htmlFor={props.label}>{props.label}</label>
    </button>
  );
 }
