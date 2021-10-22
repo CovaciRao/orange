@@ -7,7 +7,7 @@ function FormControl(props) {
     <label htmlFor={props.for}>{props.label}</label>
     <br/>
     {props.for == "textarea" ? 
-      <textarea type={props.type}  name={props.name} id={props.id} value={props.value}></textarea>
+      <textarea type={props.type} name={props.name} id={props.id} value={props.value}></textarea>
     :
       props.type == "radio" ?
        <React.Fragment>
