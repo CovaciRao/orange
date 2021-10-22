@@ -46,9 +46,9 @@ class App extends React.Component {
             <FormControl type="password" label="Password" for="password" name="password" id="password" />
             <FormControl type="password" label="Confirm Password" for="password" name="confirmPassword" id="confirmPassword" />
             <FormControl type="textarea" label="Motto" for="textarea" name="motto" id="motto" />
-            <FormControl type="radio" label="User personalized" for="radiozxcxzc" name="userPersonalizedssz" id="userPersonalized" val1="yes" val2="no"/>
+            <FormControl type="radio" label="User personalized" for="radiozxcxzc" name="userPersonalizedssz" id="userPersonalized" val1="yes" val2="no" isChecked="false" />
           </UserForm>
-          <UserForm       
+          <UserForm
             title="Edit Profile"  
             buttonTheme="button"
             buttonType="submit"
