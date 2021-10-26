@@ -4,6 +4,7 @@ import './ArrayLand.css';
 class ArrayLand extends React.Component {
   constructor(props) {
     super(props);
+    this.timerHandle = null;
     this.state = {
       boxes: [
         [
@@ -15,7 +16,8 @@ class ArrayLand extends React.Component {
         [
           '🍌','🍋','🍌','🍋','🍊','🍌','🍌',
         ]
-      ]
+      ],
+      sniper: 0,
     }
   }
 
@@ -25,7 +27,8 @@ class ArrayLand extends React.Component {
     fruits.map((fruit) => fruit.sort((a,b) => sortOrder.indexOf(a) - sortOrder.indexOf(b)));
     this.setState({
       boxes: fruits,
-    });
+      sniper: 1,
+    }, () => this.TimeOutFruits());
   }
 
   SortBoxes = () => {
@@ -42,7 +45,57 @@ class ArrayLand extends React.Component {
     }
     this.setState({
       boxes: newBoxes,
+      sniper: 1,
+    }, () => this.setTimer())
+  }
+
+  ShuffleFruits = () => {
+    let fruits = this.state.boxes;
+    let newBoxes = new Array(3).fill([]);
+    let newarray = [].concat.apply([], fruits);
+    let counter;
+    newarray = newarray.sort(() => 0.5 - Math.random());
+    newarray.map((fruit) => {
+      counter = this.getRandomInt(3);
+      newBoxes[counter] = [...newBoxes[counter],fruit]
     })
+    return newBoxes;
+  }
+
+   getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+  TimeOutFruits = () => {
+    this.timerHandle = setTimeout(() => {
+      this.setState({
+        boxes: this.ShuffleFruits(),
+        sniper: 0,
+      })
+    }, 3000)
+    return this.timerHandle;
+  }
+
+  setTimer = () => {
+    if(this.timerHandler) {
+      return;
+    } else 
+    this.TimeOutFruits();
+  }
+
+  clearTimer = () => {
+    if (this.timerHandle) {
+      clearTimeout(this.timerHandle);
+      this.timerHandle = null;
+    }
+  };
+
+  componentDidUpdate() {
+    this.clearTimer();
+  }
+
+  componentWillUnmount() {
+    this.clearTimer();
   }
 
   render() {
