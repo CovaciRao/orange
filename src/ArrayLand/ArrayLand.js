@@ -17,7 +17,6 @@ class ArrayLand extends React.Component {
           '🍌','🍋','🍌','🍋','🍊','🍌','🍌',
         ]
       ],
-      sniper: 0,
     }
   }
 
@@ -27,7 +26,6 @@ class ArrayLand extends React.Component {
     fruits.map((fruit) => fruit.sort((a,b) => sortOrder.indexOf(a) - sortOrder.indexOf(b)));
     this.setState({
       boxes: fruits,
-      sniper: 1,
     }, () => this.TimeOutFruits());
   }
 
@@ -45,7 +43,6 @@ class ArrayLand extends React.Component {
     }
     this.setState({
       boxes: newBoxes,
-      sniper: 1,
     }, () => this.setTimer())
   }
 
@@ -70,7 +67,6 @@ class ArrayLand extends React.Component {
     this.timerHandle = setTimeout(() => {
       this.setState({
         boxes: this.ShuffleFruits(),
-        sniper: 0,
       })
     }, 3000)
     return this.timerHandle;
