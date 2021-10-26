@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import ArrayLand from './ArrayLand/ArrayLand';
 import Clock from './Clock/Clock';
 import FormControl from './FormControl/FormControl';
 import OrangeCounter from './OrangeCounter/OrangeCounter';
@@ -22,8 +23,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <button onClick={this.MoreOranges}>AdaugaProtocale</button>
-        <OrangeCounter protocale={this.state.counter}/>
+        {/* <button onClick={this.MoreOranges}>AdaugaProtocale</button>
+        <OrangeCounter protocale={this.state.counter}/> */}
+        <ArrayLand />
       </div>
     );
   }
