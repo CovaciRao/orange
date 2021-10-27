@@ -80,7 +80,7 @@ class ArrayLand extends React.Component {
   }
 
   clearTimer = () => {
-    if (this.timerHandle) {
+    if(this.timerHandle) {
       clearTimeout(this.timerHandle);
       this.timerHandle = null;
     }
