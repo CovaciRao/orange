@@ -409,8 +409,10 @@ class DataLand extends Component {
       users: USER_DATA,
       column: '',
       direction: 'asc',
+      filterValue: '',
     }
   }
+  availableFilters = ['username', 'email'];
   sortByUsername = () => {
     let sortedArray = this.state.users.slice();
     let direction = this.state.direction;
@@ -458,12 +460,42 @@ class DataLand extends Component {
     return sortedArray.length;
   }
 
-  setFilterValue = () => [
-    console.log('blue')
-  ]
+  setFilterValue = (ev) => {
+    this.setState({
+      filterValue: ev.target.value
+    });
+  }
 
+  getFilteredItems = (filterValue, availableFilters, itemList) => {
+    let filteredItems;
+    if(filterValue !== '') {
+      filteredItems = itemList.filter((entity) => {
+        return availableFilters.some((filterEntry) => {
+          const nestedEntry = filterEntry.split('.');
+          let entityPropertyValue;     
+          if(nestedEntry.length === 1) {
+            entityPropertyValue = entity[filterEntry];
+            return String(entityPropertyValue).toLowerCase().includes(filterValue)
+          } else if(nestedEntry.length === 2 && entity[nestedEntry[0]] !== null) {
+              entityPropertyValue = entity[nestedEntry[0]][nestedEntry[1]];
+              return String(entityPropertyValue).toLowerCase().includes(filterValue)
+            } 
+        })
+      })
+      
+    } else {
+      filteredItems = itemList;
+    }
+
+    return filteredItems;
+  }
+
+  createFilteredArray = () => {
+
+  }
 
   render() {
+    const FilteredItems = this.getFilteredItems(this.state.filterValue, this.availableFilters, this.state.users);
     return (
       <>
         <div className="form-control">
@@ -498,20 +530,21 @@ class DataLand extends Component {
             </tr>
           </thead>
           <tbody>                    
-            {this.state.users.map((user, index) => {
+            {FilteredItems.map((user, index) => {
               return(
-              <tr key={index}>
+                <tr key={index}>
                 <td>{index+1}</td>
                 <td>{user.username}</td>
                 <td>{user.email}</td>
               </tr>
               );
-            })}
+            })
+            }
           </tbody>
           <tfoot>
             <tr>
               <th></th>
-              <th colSpan="3"><span>There are {this.showUsersNumber()} result{this.showUsersNumber() > 1 ? "s" : this.showUsersNumber() == 0 ? "s" : ''} </span></th>
+              <th colSpan="3"><span>There are {FilteredItems.length} result{FilteredItems.length > 1 ? "s" : FilteredItems.length == 0 ? "s" : ''} </span></th>
             </tr>
           </tfoot>
         </table>
