@@ -466,7 +466,7 @@ class DataLand extends Component {
     });
   }
 
-  getFilteredItems = (filterValue, availableFilters, itemList) => {
+  getFilteredUsers = (filterValue, availableFilters, itemList) => {
     let filteredItems;
     if(filterValue !== '') {
       filteredItems = itemList.filter((entity) => {
@@ -482,20 +482,14 @@ class DataLand extends Component {
             } 
         })
       })
-      
     } else {
       filteredItems = itemList;
     }
-
     return filteredItems;
   }
 
-  createFilteredArray = () => {
-
-  }
-
   render() {
-    const FilteredItems = this.getFilteredItems(this.state.filterValue, this.availableFilters, this.state.users);
+    const FilteredUsers = this.getFilteredUsers(this.state.filterValue, this.availableFilters, this.state.users);
     return (
       <>
         <div className="form-control">
@@ -530,7 +524,7 @@ class DataLand extends Component {
             </tr>
           </thead>
           <tbody>                    
-            {FilteredItems.map((user, index) => {
+            {FilteredUsers.map((user, index) => {
               return(
                 <tr key={index}>
                 <td>{index+1}</td>
@@ -544,7 +538,7 @@ class DataLand extends Component {
           <tfoot>
             <tr>
               <th></th>
-              <th colSpan="3"><span>There are {FilteredItems.length} result{FilteredItems.length > 1 ? "s" : FilteredItems.length == 0 ? "s" : ''} </span></th>
+              <th colSpan="3"><span>There are {FilteredUsers.length} result{FilteredUsers.length > 1 ? "s" : FilteredUsers.length == 0 ? "s" : ''} </span></th>
             </tr>
           </tfoot>
         </table>
