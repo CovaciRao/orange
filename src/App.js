@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import DataLand from './DataLand/DataLand';
+import StorageLand from './StorageLand/StorageLand';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,11 +19,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* <button onClick={this.MoreOranges}>AdaugaProtocale</button>
-        <OrangeCounter protocale={this.state.counter}/> */}
-        {/* <ArrayLand /> */}
-        {/* <UserList /> */}
-        <DataLand />
+        <StorageLand />
       </div>
     );
   }
